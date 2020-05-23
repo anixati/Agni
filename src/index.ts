@@ -2,6 +2,13 @@ import * as dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
+import { roleRouter } from "./routers/roles.router";
+import { errorHandler } from './middleware/error.middleware';
+import { notFoundHandler } from "./middleware/notfound.middleware";
+
+//internal
+
+
 
 //configuration
 dotenv.config();
@@ -19,6 +26,12 @@ if (!process.env.PORT) process.exit(1);
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+
+app.use("/roles", roleRouter);
+
+//middleware
+app.use(errorHandler);
+app.use(notFoundHandler);
 
 //start server 
 const server = app.listen(PORT, () => {
