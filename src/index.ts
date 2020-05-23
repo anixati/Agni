@@ -2,13 +2,10 @@ import * as dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
+//internal
 import { roleRouter } from "./routers/roles.router";
 import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from "./middleware/notfound.middleware";
-
-//internal
-
-
 
 //configuration
 dotenv.config();
